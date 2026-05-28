@@ -1,0 +1,14 @@
+---
+description: React and UI component patterns for this repo
+globs: src/**/*.tsx
+alwaysApply: false
+---
+
+# React & UI
+
+- Use functional components and named exports where the file already does
+- Import UI from `@/components/ui/*` (shadcn-style Button, Badge, Separator)
+- Section components live in `src/components/sections/`; layout in `src/components/layout/`
+- Copy and static content: `src/data/content.ts`
+- Prefer `container-editorial`, `section-padding`, and display type utilities from `src/index.css`
+- Buttons support `href` for anchor CTAs; use shadcn variants (`default`, `outline`, `secondary`, `ghost`, `brand`)

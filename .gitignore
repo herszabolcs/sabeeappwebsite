@@ -36,8 +36,8 @@ lerna-debug.log*
 *.swo
 *~
 
-# Cursor (local workspace state; keep shared rules if you add them later)
-.cursor/
+# Cursor (local workspace state; shared rules are committed)
+.cursor/*
 !.cursor/rules/
 !.cursor/rules/**
 
@@ -72,6 +72,10 @@ playwright/.cache/
 .temp/
 supabase/.temp/
 supabase/.branches/
+
+# Large media served from Supabase Storage (see src/lib/media.ts)
+public/logos/
+public/hero/
 
 # shadcn CLI artifact (misplaced path-alias output at repo root)
 @/

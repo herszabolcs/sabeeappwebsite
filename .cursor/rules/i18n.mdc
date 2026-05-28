@@ -1,0 +1,54 @@
+---
+description: Multilingual architecture — plan for i18n, translate only on user command
+alwaysApply: true
+---
+
+# Multilingual (i18n)
+
+The site must support multiple languages. Design for it from the start; **do not add translations unless the user explicitly asks**.
+
+## Default behavior
+
+- Ship **English only** until the user requests a locale or full translation pass
+- Do not install i18n libraries, locale switchers, or extra language files proactively
+- Do not translate existing copy into other languages on your own
+
+## Target locales
+
+The site will be translated into these languages (English is the source of truth):
+
+| Code | Language   |
+|------|------------|
+| `en` | English *(default)* |
+| `de` | German     |
+| `es` | Spanish    |
+| `lt` | Lithuanian |
+| `ro` | Romanian   |
+| `hu` | Hungarian  |
+| `tr` | Turkish    |
+| `el` | Greek      |
+| `th` | Thai       |
+
+Do not add any of these translations until explicitly instructed for a specific locale.
+
+## How to build i18n-ready now
+
+- Keep user-facing strings out of JSX when practical — use `src/data/content.ts` or locale-ready modules with stable keys
+- Prefer keyed content shapes, e.g. `{ title: '...', description: '...' }`, not anonymous strings scattered in components
+- Avoid string concatenation for sentences; use full phrases per key so translators can reorder words
+- Leave room for longer copy (German, Hungarian, etc.) — avoid fixed widths that break with longer text
+- Set `lang="en"` on `<html>` for now; plan to make it dynamic later
+- Plan for locale-aware URLs (e.g. `/en/...`, `/hu/...`) or a query/subdomain strategy — pick one when implementing routing, do not guess without user input
+
+## When the user asks to translate
+
+- Confirm target locale(s) and scope (single section vs full site)
+- Add or extend locale files / i18n setup only for requested languages
+- Keep English as the source of truth unless told otherwise
+- Update SEO metadata (`title`, `description`, Open Graph) per locale when translating pages
+
+## Do not
+
+- Hardcode language-specific logic in components (no `if (lang === 'hu')` in UI code)
+- Mix translated and untranslated strings in the same visible section
+- Auto-translate marketing copy without explicit approval

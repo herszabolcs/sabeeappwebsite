@@ -25,4 +25,8 @@ export const media = {
     src: `${STORAGE_BASE}/home/how-2.png`,
     alt: 'Team members laughing together while using a tablet in a modern workspace',
   },
+  homeVacationRentals: {
+    src: `${STORAGE_BASE}/home/vacation-rentals.png`,
+    alt: 'Modern lakeside vacation rental cabin in a wooded setting',
+  },
 } as const

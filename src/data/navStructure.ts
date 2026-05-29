@@ -42,10 +42,6 @@ export const solutionsNavStructure = {
         key: 'independentHotels',
         href: routes.hotelOperationsSoftware,
       },
-      {
-        key: 'boutiqueHotels',
-        href: routes.hotelOperationsSoftware,
-      },
       { key: 'hostels', href: routes.hostelManagementSystem },
       {
         key: 'vacationRentals',

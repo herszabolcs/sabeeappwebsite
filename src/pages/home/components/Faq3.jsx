@@ -32,7 +32,7 @@ export function Faq3() {
               Can I try it free?
             </AccordionTrigger>
             <AccordionContent className="md:pb-6">
-              Yes. One month free, no credit card required. You get full access
+              Yes.. One month free, no credit card required. You get full access
               to all features. Cancel anytime.
             </AccordionContent>
           </AccordionItem>

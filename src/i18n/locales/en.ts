@@ -92,10 +92,9 @@ export const en = {
         label: 'By property type',
         items: [
           { key: 'independentHotels', title: 'Independent Hotels' },
-          { key: 'boutiqueHotels', title: 'Boutique Hotels' },
-          { key: 'hostels', title: 'Hostels' },
+          { key: 'hostels', title: 'Hostel Operations' },
           { key: 'vacationRentals', title: 'Vacation Rentals' },
-          { key: 'multiProperty', title: 'Multi-property' },
+          { key: 'multiProperty', title: 'Multi Property' },
         ],
       },
       roles: {

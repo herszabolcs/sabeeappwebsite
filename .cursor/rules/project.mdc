@@ -1,0 +1,50 @@
+---
+description: SabeeApp website project context and conventions
+alwaysApply: true
+---
+
+# SabeeApp Website
+
+Marketing site for SabeeApp (cloud hotel PMS). Not a dashboard app.
+
+## Stack
+
+- React 19 + TypeScript + Vite
+- Tailwind CSS v4 (`src/index.css`, no `tailwind.config`)
+- shadcn/ui primitives in `src/components/ui/`
+- shadcnblocks for homepage sections (API key in `.env` as `SHADCNBLOCKS_API_KEY`)
+- Supabase for demo leads (`src/lib/supabase.ts`)
+- Path alias: `@/` → `src/`
+
+## shadcnblocks
+
+- **Always install the original block** from the shadcnblocks registry — never hand-build a “similar” section when fetch fails
+- Registry URL: `https://www.shadcnblocks.com/r/{name}.json` (or `@shadcnblocks/{name}` via `components.json` registries)
+- If install returns **401** or auth fails: **stop and tell the user** — do not substitute a custom implementation
+- After a successful install, only swap copy/images/CTAs as instructed; keep block layout, animations, and structure
+
+## Design direction
+
+- Foundation: shadcnblocks — clean white canvas, typographic hierarchy, one accent color
+- Target feel: editorial premium (Square, Shopify, Stripe)
+- Close the gap with photography and typographic drama
+- Primary typeface: **Satoshi** (Fontshare CDN) — body via `font-sans`, headlines via `font-display`; Instrument Serif kept as optional `font-serif` accent
+- Display headlines: 72–80px, tight tracking, `font-display` / `text-display-*` utilities
+- Brand accent: hospitality-friendly blue; warm neutral backgrounds
+- Prefer product UI mockups over stock hotel photos
+
+## Conventions
+
+- Build homepage section by section; wait for block/content instructions before adding sections
+- **Multilingual**: plan i18n from the start; English only until the user requests translations (see `i18n.mdc`)
+- Keep changes focused; match existing patterns in nearby files
+- Never commit secrets (`.env`, API keys, Supabase credentials)
+- Use `cn()` from `@/lib/utils` for class merging
+
+## Media / images
+
+- **All website photos and images must be uploaded to Supabase Storage** — never commit image files to the repo or reference local paths
+- Use the `sabeeapp-website` bucket (create it if it doesn't exist); organise by folder: `hero/`, `team/`, `logos/`, `sections/`, etc.
+- Reference images via the public Supabase Storage URL: `https://<project>.supabase.co/storage/v1/object/public/sabeeapp-website/<path>`
+- When the user provides a photo, upload it to Supabase Storage first, then use the returned public URL in the component
+- Keep `src/lib/supabase.ts` as the single Supabase client — import from there, never instantiate a second client
